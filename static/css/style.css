@@ -1,0 +1,119 @@
+body {
+    background-image: url('bgg\ \(1\).png'); /* Path to the image */
+    background-size: cover; /* Ensures the image covers the entire page */
+    background-position: center; /* Centers the image */
+    background-attachment: fixed; /* Keeps the background image fixed when scrolling */
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/* Common styles */
+body {
+    font-family: cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Enter names page styles */
+.container {
+    background-color: rgb(255, 255, 255);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+label {
+    font-weight: bold;
+    color: #555;
+}
+
+input {
+    padding: 0.8rem;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 1rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Game page styles */
+.game-container {
+    text-align: center;
+}
+
+table {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+td {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #ccc;
+    text-align: center;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.game-button {
+    width: 100%;
+    height: 100%;
+    font-size: 2rem;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.game-button:hover {
+    background-color: #f0f0f0;
+}
+
+.X {
+    color: red;
+}
+
+.O {
+    color: blue;
+}
+
+.winner {
+    font-size: 1.5rem;
+    margin-top: 20px;
+}

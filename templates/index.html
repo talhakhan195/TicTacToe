@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe</title>
+    <link rel="icon" href="../static/css/icon.jpg">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Tic-Tac-Toe Game</h1>
+
+        {% if not game_state.player1 or not game_state.player2 %}
+            <h2>Enter Player Names</h2>
+            <form method="POST">
+                <input type="text" name="player1" placeholder="Player 1 Name (X)" required>
+                <input type="text" name="player2" placeholder="Player 2 Name (O)" required>
+                <button type="submit">Start Game</button>
+            </form>
+        {% else %}
+            <h2>{{ game_state.current_player }}'s Turn</h2>
+            <h3>Player 1 Wins: {{ game_state.player1_wins }} | Player 2 Wins: {{ game_state.player2_wins }}</h3>
+            <h4>{{ game_state.player1 }} (X) vs {{ game_state.player2 }} (O)</h4>
+            <form method="POST">
+                <table>
+                    <tr>
+                        <td><button type="submit" name="cell" value="0" class="game-button {{ 'X' if game_state.board[0] == 'X' else 'O' if game_state.board[0] == 'O' else '' }}">{{ game_state.board[0] }}</button></td>
+                        <td><button type="submit" name="cell" value="1" class="game-button {{ 'X' if game_state.board[1] == 'X' else 'O' if game_state.board[1] == 'O' else '' }}">{{ game_state.board[1] }}</button></td>
+                        <td><button type="submit" name="cell" value="2" class="game-button {{ 'X' if game_state.board[2] == 'X' else 'O' if game_state.board[2] == 'O' else '' }}">{{ game_state.board[2] }}</button></td>
+                    </tr>
+                    <tr>
+                        <td><button type="submit" name="cell" value="3" class="game-button {{ 'X' if game_state.board[3] == 'X' else 'O' if game_state.board[3] == 'O' else '' }}">{{ game_state.board[3] }}</button></td>
+                        <td><button type="submit" name="cell" value="4" class="game-button {{ 'X' if game_state.board[4] == 'X' else 'O' if game_state.board[4] == 'O' else '' }}">{{ game_state.board[4] }}</button></td>
+                        <td><button type="submit" name="cell" value="5" class="game-button {{ 'X' if game_state.board[5] == 'X' else 'O' if game_state.board[5] == 'O' else '' }}">{{ game_state.board[5] }}</button></td>
+                    </tr>
+                    <tr>
+                        <td><button type="submit" name="cell" value="6" class="game-button {{ 'X' if game_state.board[6] == 'X' else 'O' if game_state.board[6] == 'O' else '' }}">{{ game_state.board[6] }}</button></td>
+                        <td><button type="submit" name="cell" value="7" class="game-button {{ 'X' if game_state.board[7] == 'X' else 'O' if game_state.board[7] == 'O' else '' }}">{{ game_state.board[7] }}</button></td>
+                        <td><button type="submit" name="cell" value="8" class="game-button {{ 'X' if game_state.board[8] == 'X' else 'O' if game_state.board[8] == 'O' else '' }}">{{ game_state.board[8] }}</button></td>
+                    </tr>
+                </table>
+            </form>
+
+            {% if game_state.winner %}
+                <h2 class="winner">{{ game_state.player1 if game_state.winner == 'X' else game_state.player2 }} Wins!</h2>
+            {% elif game_state.draw %}
+                <h2 class="winner">It's a draw!</h2>
+            {% endif %}
+
+            <form method="POST" action="/reset" style="margin-bottom: 20px;">
+                <button type="submit">Play Again</button>
+            </form>
+
+            <form method="POST" action="/new_game">
+                <button type="submit">New Game (Reset Names)</button>
+            </form>
+        {% endif %}
+    </div>
+</body>
+</html>
